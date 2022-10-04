@@ -6,7 +6,7 @@ const user_schema = new mongoose.Schema({
     username: {
         type: String,
         unique: true,
-        minlength: 100,
+        maxlength: 100,
         required: [true, "Please provide username.."]
     },
     email: {
@@ -14,13 +14,13 @@ const user_schema = new mongoose.Schema({
         required: [true, "Please provide email.."],
         unique: true,
         lowercase: true,
-        minlength: 50,
+        maxlength: 50,
         validate: [validator.isEmail, "Provided email is not in valid form.."]
     },
     password: {
         type: String,
         required: [true, "Please provide password.."],
-        minlength: 50
+        maxlength: 50
     },
     passwordConfirm: {
         type: String,

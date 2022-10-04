@@ -34,4 +34,6 @@ const user_schema = new mongoose.Schema({
     }
 });
 
+// TODO: encrypt password before saving
+
 module.exports = mongoose.model("user", user_schema);

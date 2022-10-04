@@ -16,7 +16,7 @@ exports.signup = async (req, res) => {
 }
 
 exports.login = (req, res) => {
-    res.status(201).json({
+    res.status(200).json({
         status: true,
         message: "login() not implemented yet"
     });

@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/Hoon-Yim/101325908_COMP3123_Assignment1#readme",
   "dependencies": {
+    "crypto": "^1.0.1",
     "dotenv": "^16.0.3",
     "express": "^4.18.1"
   }

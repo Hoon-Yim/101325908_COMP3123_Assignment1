@@ -2,8 +2,10 @@ const mongoose = require("mongoose");
 const validator = require("validator");
 
 const user_schema = new mongoose.Schema({
+    // username is unique because the instruction says it should be primary key
     username: {
         type: String,
+        unique: true,
         required: [true, "Please provide username.."]
     },
     email: {

@@ -3,8 +3,8 @@ const AppError = require("../utils/app_error");
 const SendError = (err, req, res, next) => {
     return res.status(err.status_code).json({
         status: err.status,
-        error: err,
         message: err.message,
+        error: err,
         error_stack: err.stack
     });
 }

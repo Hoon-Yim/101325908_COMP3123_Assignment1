@@ -11,7 +11,8 @@ router.use(user_controller.protect);
 router
     .route("/employees")
     .get(employee_controller.get_all_employees)
-    .post(employee_controller.create_employee);
+    .post(employee_controller.create_employee)
+    .delete(employee_controller.delete_employee);
 
 router
     .route("/employees/:eid")

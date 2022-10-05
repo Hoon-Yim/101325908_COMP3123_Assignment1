@@ -46,3 +46,13 @@ exports.update_employee = catch_async(async (req, res, next) => {
         employee: updated_employee
     });
 });
+
+exports.delete_employee = catch_async(async (req, res, next) => {
+    const employee = await Employee.findByIdAndDelete(req.query.eid);
+
+    if (!employee) return next(new AppError(`No employee is found with id ${req.query.eid}`, 404));
+
+    res.status(204).json({
+        status: true,
+    });
+});

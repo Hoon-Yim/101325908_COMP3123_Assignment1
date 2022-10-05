@@ -13,4 +13,9 @@ router
     .get(employee_controller.get_all_employees)
     .post(employee_controller.create_employee);
 
+router
+    .route("/employees/:eid")
+    .get(employee_controller.get_employee)
+    .put(employee_controller.update_employee);
+
 module.exports = router;

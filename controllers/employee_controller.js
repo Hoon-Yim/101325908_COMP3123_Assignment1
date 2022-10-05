@@ -26,3 +26,23 @@ exports.create_employee = catch_async(async (req, res, next) => {
         employee: new_employee
     });
 });
+
+exports.get_employee = catch_async(async (req, res, next) => {
+    const employee = await Employee.findById(req.params.eid);
+
+    res.status(200).json({
+        status: true,
+        employee
+    });
+});
+
+exports.update_employee = catch_async(async (req, res, next) => {
+    // the "new" option in the 3rd argument is to make it return updated document, not the original one
+    const updated_employee = await Employee.findByIdAndUpdate(req.params.eid, req.body, { new: true, runValidators: true });
+
+    res.status(200).json({
+        status: true,
+        message: `An employee ${req.params.eid} has been successfully updated`,
+        employee: updated_employee
+    });
+});

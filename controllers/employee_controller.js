@@ -11,3 +11,18 @@ exports.get_all_employees = catch_async(async (req, res, next) => {
         employees
     });
 });
+
+exports.create_employee = catch_async(async (req, res, next) => {
+    const new_employee = await Employee.create({
+        first_name: req.body.first_name,
+        last_name: req.body.last_name,
+        email: req.body.email,
+        gender: req.body.gender,
+        salary: req.body.salary,
+    });
+
+    res.status(201).json({
+        status: true,
+        employee: new_employee
+    });
+});

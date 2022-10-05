@@ -42,7 +42,7 @@ const get_token = (jwt, error_message, next) => {
 // this method checks if the user is logged in or not
 // if not, this user cannot access /api/employee routes
 exports.protect = catch_async(async (req, res, next) => {
-    const decoded = await get_token(req.cookie.jwt, "You are not logged in. Please log in to get access!", next);
+    const decoded = await get_token(req.cookies.jwt, "You are not logged in. Please log in to get access!", next);
     const user = await User.findById(decoded.id);
 
     if (!user) {

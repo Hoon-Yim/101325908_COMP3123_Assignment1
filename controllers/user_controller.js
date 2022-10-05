@@ -1,8 +1,31 @@
+const { promisify } = require("util");
 const JWT = require("jsonwebtoken");
 
 const User = require("../models/user_model");
 const AppError = require("../utils/app_error");
 const catch_async = require("../utils/catch_async");
+
+// this method will decode the jwt and return promise
+const get_token = (jwt, error_message, next) => {
+    const token = (jwt) ? jwt : undefined;
+
+    if (!token) { return next(new AppError(error_message, 401)); }
+
+    return promisify(JWT.verify)(token, process.env.JWT_SECRET);
+}
+
+// this method checks if the user is logged in or not
+// if not, this user cannot access /api/employee routes
+const protect = catch_async(async (req, res, next) => {
+    const decoded = await get_token(req.cookie.jwt, "You are not logged in. Please log in to get access!", next);
+    const user = await User.findById(decoded.id);
+
+    if (!user) {
+        return next(new AppError("The user belonging to this token does no longer exists. Please check it again", 401));
+    }
+
+    next();
+});
 
 // singing token using _id
 const sign_token = id => {
@@ -11,6 +34,7 @@ const sign_token = id => {
     });
 }
 
+// this method generates a jwt and save it into http cookie
 const create_and_send_token = (user, status_code, res) => {
     const token = sign_token(user._id);
     const cookie_options = {

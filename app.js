@@ -8,7 +8,9 @@ app.use(cookie_parser());
 
 // routers
 const user_router = require("./routers/user_router");
+const employee_router = require("./routers/employee_router");
 app.use("/api/user", user_router);
+app.use("/api/emp", employee_router);
 
 // global error handling controller
 const error_controller = require("./controllers/error_controller");

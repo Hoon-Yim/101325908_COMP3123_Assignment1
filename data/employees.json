@@ -1,0 +1,44 @@
+[
+    {
+        "first_name": "Hoon",
+        "last_name": "Yim",
+        "email": "yimsh4507@gmail.com",
+        "gender": "male",
+        "salary": 3480.50
+    },
+    {
+        "first_name": "YoonHee",
+        "last_name": "Kim",
+        "email": "aayuooh053@gmail.com",
+        "gender": "female",
+        "salary": 3500.30
+    },
+    {
+        "first_name": "Danny",
+        "last_name": "Nguyen",
+        "email": "Danguyen23@gmail.com",
+        "gender": "male",
+        "salary": 2600.70
+    },
+    {
+        "first_name": "Elizaveta",
+        "last_name": "Vygovskaia",
+        "email": "elizVygo1013@gmail.com",
+        "gender": "female",
+        "salary": 3525.50
+    },
+    {
+        "first_name": "Taylor",
+        "last_name": "Swift",
+        "email": "taylor8772@gmail.com",
+        "gender": "female",
+        "salary": 1250.00
+    },
+    {
+        "first_name": "Tony",
+        "last_name": "Stark",
+        "email": "toniestar100@gmail.com",
+        "gender": "male",
+        "salary": 2807.25
+    }
+]

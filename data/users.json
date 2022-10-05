@@ -1,0 +1,32 @@
+[
+    {
+        "username": "Hoonie",
+        "email": "yimsh4507@gmail.com",
+        "password": "default_pass",
+        "password_confirm": "default_pass"
+    },
+    {
+        "username": "Yoonie",
+        "email": "aayuooh053@gmail.com",
+        "password": "default_pass",
+        "password_confirm": "default_pass"
+    },
+    {
+        "username": "Xquisite",
+        "email": "xquisite123@gmail.com",
+        "password": "default_pass",
+        "password_confirm": "default_pass"
+    },
+    {
+        "username": "StarrySky",
+        "email": "starrysky934@gmail.com",
+        "password": "default_pass",
+        "password_confirm": "default_pass"
+    },
+    {
+        "username": "windstars",
+        "email": "sexynoodle@gmail.com",
+        "password": "default_pass",
+        "password_confirm": "default_pass"
+    }
+]

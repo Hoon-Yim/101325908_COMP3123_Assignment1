@@ -31,14 +31,14 @@ const create_and_send_token = (user, status_code, res) => {
 }
 
 // this method will decode the jwt and return promise
-const get_token = (header, error_message, next) => {
+const get_token = (headers, error_message, next) => {
     let token;
 
     if (
-        req.headers.authorization &&
-        req.headers.authorization.startsWith("Bearer")
+        headers.authorization &&
+        headers.authorization.startsWith("Bearer")
     ) {
-        token = req.headers.authorization.split(' ')[1];
+        token = headers.authorization.split(' ')[1];
     }
 
     if (!token) { return next(new AppError(error_message, 401)); }

@@ -31,8 +31,15 @@ const create_and_send_token = (user, status_code, res) => {
 }
 
 // this method will decode the jwt and return promise
-const get_token = (jwt, error_message, next) => {
-    const token = (jwt) ? jwt : undefined;
+const get_token = (header, error_message, next) => {
+    let token;
+
+    if (
+        req.headers.authorization &&
+        req.headers.authorization.startsWith("Bearer")
+    ) {
+        token = req.headers.authorization.split(' ')[1];
+    }
 
     if (!token) { return next(new AppError(error_message, 401)); }
 
@@ -42,7 +49,7 @@ const get_token = (jwt, error_message, next) => {
 // this method checks if the user is logged in or not
 // if not, this user cannot access /api/employee routes
 exports.protect = catch_async(async (req, res, next) => {
-    const decoded = await get_token(req.cookies.jwt, "You are not logged in. Please log in to get access!", next);
+    const decoded = await get_token(req.headers, "You are not logged in. Please log in to get access!", next);
     const user = await User.findById(decoded.id);
 
     if (!user) {

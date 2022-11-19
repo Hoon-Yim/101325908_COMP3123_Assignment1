@@ -1,3 +1,4 @@
+const cors = require("cors");
 const cookie_parser = require("cookie-parser");
 const express = require("express");
 const app = express();
@@ -6,11 +7,9 @@ const app = express();
 app.use(express.json());
 app.use(cookie_parser());
 
+app.use(cors());
+
 // routers
-app.use((req, res, next) => {
-    res.header("Access-Control-Allow-Origin", "*");
-    next();
-});
 const user_router = require("./routers/user_router");
 const employee_router = require("./routers/employee_router");
 app.use("/api/user", user_router);

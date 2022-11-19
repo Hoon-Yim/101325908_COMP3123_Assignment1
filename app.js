@@ -7,7 +7,7 @@ const app = express();
 app.use(express.json());
 app.use(cookie_parser());
 
-app.use(cors({ origin: "http://localhost:3000" }));
+app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
 
 // routers
 const user_router = require("./routers/user_router");

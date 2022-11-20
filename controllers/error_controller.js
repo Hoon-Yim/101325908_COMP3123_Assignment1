@@ -9,6 +9,11 @@ const SendError = (err, req, res, next) => {
     });
 }
 
+const handleDuplicateFieldsDB = err => {
+    const message = `Duplicate Field Value: ${err.KeyValue.name}. Please use another value!`;
+    return new AppError(message, 400);
+}
+
 const handleJWTError = () => new AppError("Invalid token.", 401);
 
 module.exports = (err, req, res, next) => {

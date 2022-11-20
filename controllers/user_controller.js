@@ -56,6 +56,8 @@ exports.protect = catch_async(async (req, res, next) => {
         return next(new AppError("The user belonging to this token does no longer exists. Please check it again", 401));
     }
 
+    req.user = user;
+
     next();
 });
 
@@ -84,4 +86,12 @@ exports.login = catch_async(async (req, res, next) => {
     }
 
     create_and_send_token(user, 200, res);
+});
+
+exports.get_logged_in_user = catch_async(async (req, res, next) => {
+    res.status(200).json({
+        status: true,
+        message: "Currently logged in user has been successfully returned",
+        user: req.user
+    });
 });

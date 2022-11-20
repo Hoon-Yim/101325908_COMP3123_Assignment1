@@ -10,7 +10,9 @@ const SendError = (err, req, res, next) => {
 }
 
 const handleDuplicateFieldsDB = err => {
-    const message = `Duplicate Field Value: ${err.KeyValue.name}. Please use another value!`;
+    const key = Object.keys(err.keyValue);
+    const value = Object.values(err.keyValue);
+    const message = `Someone is already signed up with ${key} as ${value}. Please use another ${key}!`;
     return new AppError(message, 400);
 }
 

@@ -23,6 +23,7 @@ module.exports = (err, req, res, next) => {
     let error = { ...err };
     error.message = err.message;
 
+    if (error.code === 11000) error = handleDuplicateFieldsDB(error);
     if (error.name === "JsonWebTokenError") error = handleJWTError();
 
     SendError(error, req, res, next);
